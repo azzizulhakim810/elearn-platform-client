@@ -8,7 +8,7 @@ const MyAssignments = () => {
   const { user } = useContext(AuthContext);
   const [allSubmission, setAllSubmission] = useState([]);
 
-  const url = `http://localhost:5000/submitAssignment/allSubmission?email=${user.email}`;
+  const url = `http://localhost:5000/submitAssignment/specificSubmission?email=${user.email}`;
 
   useEffect(() => {
     fetch(url)
@@ -31,7 +31,7 @@ const MyAssignments = () => {
       }).then((result) => {
         
         if (result.isConfirmed) {
-          axios.delete(`http://localhost:5000/submitAssignment/allSubmission/${id}`)
+          axios.delete(`http://localhost:5000/submitAssignment/specificSubmission/${id}`)
           .then(res => {
             if(res.data.deletedCount > 0 ) {
               const remaining = allSubmission.filter(singleSub => singleSub._id !== id);
@@ -51,7 +51,7 @@ const MyAssignments = () => {
   const handleAssignmentConfirm = (id) => {
     // console.log(id);
 
-    axios.patch(`http://localhost:5000/submitAssignment/allSubmission/${id}`, {status:'Completed'})
+    axios.patch(`http://localhost:5000/submitAssignment/specificSubmission/${id}`, {status:'Completed'})
     .then(res => {
       console.log(res.data);
       if(res.data.modifiedCount > 0) {

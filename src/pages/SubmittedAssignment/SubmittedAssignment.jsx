@@ -1,14 +1,14 @@
-import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../providers/AuthProvider";
+import { useEffect, useState } from "react";
+// import { AuthContext } from "../../providers/AuthProvider";
 import ViewAllMySubmissions from "../ViewAllMySubmissions/ViewAllMySubmissions";
 import axios from "axios";
 import Swal from "sweetalert2";
 
 const SubmittedAssignment = () => {
-  const { user } = useContext(AuthContext);
+  // const { user } = useContext(AuthContext);
   const [allSubmission, setAllSubmission] = useState([]);
 
-  const url = `http://localhost:5000/submitAssignment/allSubmission?email=${user.email}`;
+  const url = `http://localhost:5000/submitAssignment/allSubmission`;
 
   useEffect(() => {
     fetch(url)

@@ -11,6 +11,7 @@ const ViewSingleAssignment = () => {
   // console.log(user);
   const userEmail = user.email;
   const userName = user.displayName;
+  const userPhoto = user.photoURL;
 
   const singleAssingment = useLoaderData();
   const { url, title, description, level, marks, date } = singleAssingment || {};
@@ -50,7 +51,7 @@ const ViewSingleAssignment = () => {
           const pdfLink = document.getElementById("swal-input1").value;
           const quickNote = document.getElementById("swal-input2").value;
           const status = "Pending";
-          return {pdfLink, quickNote, userEmail,userName, title, marks, status};
+          return {pdfLink, quickNote, userEmail,userName, userPhoto, title, marks, status};
         }
       });
       if (!assignmentSubmission?.pdfLink.length <= 0 && !assignmentSubmission?.quickNote.length <= 0) {

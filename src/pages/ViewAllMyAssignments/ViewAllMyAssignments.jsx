@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
-import { useContext } from 'react';
-import { AuthContext } from '../../providers/AuthProvider';
+// import { useContext } from 'react';
+// import { AuthContext } from '../../providers/AuthProvider';
 
 const ViewAllMyAssignments = ({singleSubmission, handleDelete, handleAssignmentConfirm}) => {
-  const {user} = useContext(AuthContext);
-  const {_id, title, marks, status} = singleSubmission || {};
+  // const {user} = useContext(AuthContext);
+  const {_id, title, marks, status, userPhoto} = singleSubmission || {};
   // console.log(user.photoURL);
-  // console.log(singleSubmission);
+  console.log(singleSubmission);
   // console.log(status);
 
 
@@ -24,7 +24,7 @@ const ViewAllMyAssignments = ({singleSubmission, handleDelete, handleAssignmentC
           <div className="flex items-center gap-3">
             <div className="avatar">
               <div className="mask mask-squircle w-12 h-12 rounded-full">
-                <img src={user.photoURL} alt="Avatar Tailwind CSS Component" />
+                <img src={userPhoto} alt="Avatar Tailwind CSS Component" />
               </div>
             </div>
             {/* <div>
