@@ -1,4 +1,4 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { BiLogoFacebook, BiLogoTwitter, BiLogoInstagram, BiLogoLinkedin} from 'react-icons/bi';
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
@@ -12,6 +12,7 @@ const ViewSingleAssignment = () => {
   const userEmail = user.email;
   const userName = user.displayName;
   const userPhoto = user.photoURL;
+  const navigate = useNavigate();
 
   const singleAssingment = useLoaderData();
   const { url, title, description, level, marks, date } = singleAssingment || {};
@@ -66,6 +67,7 @@ const ViewSingleAssignment = () => {
             "Assignment Submission Successfull",
             'success'
           );
+          navigate('/allAssignments')
         }
        })
       }

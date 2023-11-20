@@ -1,11 +1,14 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 // import { AuthContext } from "../../providers/AuthProvider";
 import ViewAllMySubmissions from "../ViewAllMySubmissions/ViewAllMySubmissions";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const SubmittedAssignment = () => {
+  const {user} = useContext(AuthContext)
+  const currentUser = user.email;
   const navigate = useNavigate();
   const [allSubmission, setAllSubmission] = useState([]);
 
@@ -18,9 +21,11 @@ const SubmittedAssignment = () => {
   }, [url]);
   // console.log(allSubmission);
 
-/*   const handleDelete = (id) => {
+  const handleDelete = (id) => {
     // console.log(id);
-
+    const captureTheUser = allSubmission?.map(s => s)?.find(m => m._id == id);
+    // console.log(captureTheUser.userEmail);
+    // console.log(currentUser);
       Swal.fire({
         title: "Are you sure?",
         text: "You won't be able to revert this!",
@@ -31,39 +36,37 @@ const SubmittedAssignment = () => {
         confirmButtonText: "Yes, delete it!"
       }).then((result) => {
         
-        if (result.isConfirmed) {
-          axios.delete(`http://localhost:5000/submitAssignment/allSubmission/${id}`)
-          .then(res => {
-            if(res.data.deletedCount > 0 ) {
-              const remaining = allSubmission.filter(singleSub => singleSub._id !== id);
-              setAllSubmission(remaining);
-            }
-            console.log(res.data)});
+        if(captureTheUser.userEmail === currentUser) {
+          if (result.isConfirmed) {
+            axios.delete(`http://localhost:5000/submitAssignment/allSubmission/${id}`)
+            .then(res => {
+              if(res.data.deletedCount > 0 ) {
+                const remaining = allSubmission.filter(singleSub => singleSub._id !== id);
+                setAllSubmission(remaining);
+              }
+              console.log(res.data)});
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success",
+              
+            });
+          }
+        }
+        
+        else if (result.isConfirmed) {
           Swal.fire({
-            title: "Deleted!",
-            text: "Your file has been deleted.",
-            icon: "success",
-            
+            icon: "error",
+            title: "Oops...",
+            text: "You can't delete other's assignments",
           });
         }
       });
-  } */
+  }
 
 
   const handleAssignmentMark = async (id) => {
     // console.log(id);
-
-/*     axios.patch(`http://localhost:5000/submitAssignment/allSubmission/${id}`, {status:'Confirmed'})
-    .then(res => {
-      console.log(res.data);
-      if(res.data.modifiedCount > 0) {
-        const remaining = allSubmission?.filter(singleSub => singleSub._id !== id);
-        const updated = allSubmission?.find(singleSub => singleSub._id === id);
-        updated.status = 'Confirmed';
-        const newSubmission = [updated, ...remaining];
-        setAllSubmission(newSubmission);
-    }
-    }) */
 
     const getThePending = allSubmission?.map(s => s)?.find(m => m._id == id);
     // const find = map.find(m => m._id == id);
@@ -105,7 +108,7 @@ const SubmittedAssignment = () => {
       if(res.data.modifiedCount > 0) {
         Swal.fire(
           'Great!',
-          "Got Mark! Set as completed",
+          "Submitted Mark! Set as completed",
           'success'
         );
          navigate('/myAssignment');
@@ -115,7 +118,7 @@ const SubmittedAssignment = () => {
     return Swal.fire({
       icon: "error",
       title: "Oops...",
-      text: "Provide the Url & Note",
+      text: "Provide the Marks & Feedback",
     });
  
   }
@@ -166,6 +169,7 @@ const SubmittedAssignment = () => {
                 <ViewAllMySubmissions
                   key={singleSubmission._id}
                   singleSubmission={singleSubmission}
+                  handleDelete={handleDelete}
                   handleAssignmentMark={handleAssignmentMark}
                 ></ViewAllMySubmissions>
               ))}

@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import ViewAllMyAssignments from "../ViewAllMyAssignments/ViewAllMyAssignments";
-import axios from "axios";
-import Swal from "sweetalert2";
+// import axios from "axios";
+// import Swal from "sweetalert2";
 
 const MyAssignments = () => {
   const { user } = useContext(AuthContext);
@@ -17,7 +17,7 @@ const MyAssignments = () => {
   }, [url]);
   // console.log(allSubmission);
 
-  const handleDelete = (id) => {
+/*   const handleDelete = (id) => {
     // console.log(id);
 
       Swal.fire({
@@ -46,7 +46,7 @@ const MyAssignments = () => {
           });
         }
       });
-  }
+  } */
 
 /*   const handleAssignmentConfirm = (id) => {
     // console.log(id);
@@ -109,7 +109,7 @@ const MyAssignments = () => {
                 <ViewAllMyAssignments
                   key={singleSubmission._id}
                   singleSubmission={singleSubmission}
-                  handleDelete={handleDelete}
+                  // handleDelete={handleDelete}
                   // handleAssignmentConfirm={handleAssignmentConfirm}
                 ></ViewAllMyAssignments>
               ))}

@@ -2,9 +2,9 @@ import PropTypes from 'prop-types';
 // import { useContext } from 'react';
 // import { AuthContext } from '../../providers/AuthProvider';
 
-const ViewAllMyAssignments = ({singleSubmission, handleDelete}) => {
+const ViewAllMyAssignments = ({singleSubmission}) => {
   // const {user} = useContext(AuthContext);
-  const {_id, title, marks, status, userPhoto, feedback, obtainedMark} = singleSubmission || {};
+  const { title, marks, status, userPhoto, feedback, obtainedMark} = singleSubmission || {};
   // console.log(user.photoURL);
   // console.log(singleSubmission);
   // console.log(status);
@@ -16,9 +16,9 @@ const ViewAllMyAssignments = ({singleSubmission, handleDelete}) => {
       
       <tr>
         <th>
-        <button onClick={()=>handleDelete(_id)} className="btn btn-sm btn-circle bg-purple-600 text-white hover:bg-purple-900">
+        {/* <button onClick={()=>handleDelete(_id)} className="btn btn-sm btn-circle bg-purple-600 text-white hover:bg-purple-900">
   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
-</button>
+</button> */}
         </th>
         <td>
           <div className="flex items-center gap-3">
@@ -54,7 +54,7 @@ const ViewAllMyAssignments = ({singleSubmission, handleDelete}) => {
 
 ViewAllMyAssignments.propTypes = {
   singleSubmission:PropTypes.object,
-  handleDelete:PropTypes.func,
+  // handleDelete:PropTypes.func,
   handleAssignmentConfirm:PropTypes.func,
 };
 
