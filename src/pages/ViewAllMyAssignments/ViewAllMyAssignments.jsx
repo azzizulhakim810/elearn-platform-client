@@ -2,11 +2,11 @@ import PropTypes from 'prop-types';
 // import { useContext } from 'react';
 // import { AuthContext } from '../../providers/AuthProvider';
 
-const ViewAllMyAssignments = ({singleSubmission, handleDelete, handleAssignmentConfirm}) => {
+const ViewAllMyAssignments = ({singleSubmission, handleDelete}) => {
   // const {user} = useContext(AuthContext);
-  const {_id, title, marks, status, userPhoto} = singleSubmission || {};
+  const {_id, title, marks, status, userPhoto, feedback, obtainedMark} = singleSubmission || {};
   // console.log(user.photoURL);
-  console.log(singleSubmission);
+  // console.log(singleSubmission);
   // console.log(status);
 
 
@@ -38,12 +38,12 @@ const ViewAllMyAssignments = ({singleSubmission, handleDelete, handleAssignmentC
           {title}
         </td>
         <td>{marks}</td>
-        <td>20</td>
-        <td>Good</td>
+        <td>{obtainedMark}</td>
+        <td>{feedback}</td>
         <th>
           {
             status === "Completed" ? <span className="btn btn-ghost btn-xs">Completed</span> :
-            <button onClick={()=> handleAssignmentConfirm(_id)} className="btn btn-ghost btn-xs">Pending</button>
+            <button className="btn btn-ghost btn-xs">Pending</button>
           }
           
         </th>

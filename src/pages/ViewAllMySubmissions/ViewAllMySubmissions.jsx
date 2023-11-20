@@ -2,9 +2,9 @@ import PropTypes from 'prop-types';
 // import { useContext } from 'react';
 // import { AuthContext } from '../../providers/AuthProvider';
 
-const ViewAllMyAssignments = ({singleSubmission, handleDelete, handleAssignmentConfirm}) => {
+const ViewAllMyAssignments = ({singleSubmission, handleAssignmentMark}) => {
   // const {user} = useContext(AuthContext);
-  const {_id, title, marks, status, userPhoto} = singleSubmission || {};
+  const {_id, title, marks, userPhoto, userName} = singleSubmission || {};
   // console.log(user.photoURL);
   // console.log(singleSubmission);
   // console.log(status);
@@ -16,9 +16,9 @@ const ViewAllMyAssignments = ({singleSubmission, handleDelete, handleAssignmentC
       
       <tr>
         <th>
-        <button onClick={()=>handleDelete(_id)} className="btn btn-sm btn-circle bg-purple-600 text-white hover:bg-purple-900">
+        {/* <button onClick={()=>handleDelete(_id)} className="btn btn-sm btn-circle bg-purple-600 text-white hover:bg-purple-900">
   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
-</button>
+</button> */}
         </th>
         <td>
           <div className="flex items-center gap-3">
@@ -35,16 +35,20 @@ const ViewAllMyAssignments = ({singleSubmission, handleDelete, handleAssignmentC
         
         
         <td>
+          {userName}
+        </td>
+        <td>
           {title}
         </td>
         <td>{marks}</td>
-        <td>20</td>
-        <td>Good</td>
+        {/* <td>20</td> */}
+        {/* <td>Good</td> */}
         <th>
-          {
+          {/* {
             status === "Completed" ? <span className="btn btn-ghost btn-xs">Completed</span> :
-            <button onClick={()=> handleAssignmentConfirm(_id)} className="btn btn-ghost btn-xs">Pending</button>
-          }
+            <button onClick={()=> handleAssignmentMark(_id)} className="btn btn-ghost btn-xs">Pending</button>
+          } */}
+          <button onClick={()=> handleAssignmentMark(_id)} className="btn btn-ghost btn-xs">Give Mark</button>
           
         </th>
       </tr>
@@ -54,8 +58,7 @@ const ViewAllMyAssignments = ({singleSubmission, handleDelete, handleAssignmentC
 
 ViewAllMyAssignments.propTypes = {
   singleSubmission:PropTypes.object,
-  handleDelete:PropTypes.func,
-  handleAssignmentConfirm:PropTypes.func,
+  handleAssignmentMark:PropTypes.func,
 };
 
 export default ViewAllMyAssignments;

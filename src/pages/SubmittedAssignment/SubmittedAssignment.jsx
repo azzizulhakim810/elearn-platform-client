@@ -3,12 +3,13 @@ import { useEffect, useState } from "react";
 import ViewAllMySubmissions from "../ViewAllMySubmissions/ViewAllMySubmissions";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const SubmittedAssignment = () => {
-  // const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
   const [allSubmission, setAllSubmission] = useState([]);
 
-  const url = `http://localhost:5000/submitAssignment/allSubmission`;
+  const url = `http://localhost:5000/submitAssignment/allSubmission/status`;
 
   useEffect(() => {
     fetch(url)
@@ -17,7 +18,7 @@ const SubmittedAssignment = () => {
   }, [url]);
   // console.log(allSubmission);
 
-  const handleDelete = (id) => {
+/*   const handleDelete = (id) => {
     // console.log(id);
 
       Swal.fire({
@@ -46,12 +47,13 @@ const SubmittedAssignment = () => {
           });
         }
       });
-  }
+  } */
 
-  const handleAssignmentConfirm = (id) => {
+
+  const handleAssignmentMark = async (id) => {
     // console.log(id);
 
-    axios.patch(`http://localhost:5000/submitAssignment/allSubmission/${id}`, {status:'Confirmed'})
+/*     axios.patch(`http://localhost:5000/submitAssignment/allSubmission/${id}`, {status:'Confirmed'})
     .then(res => {
       console.log(res.data);
       if(res.data.modifiedCount > 0) {
@@ -61,7 +63,61 @@ const SubmittedAssignment = () => {
         const newSubmission = [updated, ...remaining];
         setAllSubmission(newSubmission);
     }
-    })
+    }) */
+
+    const getThePending = allSubmission?.map(s => s)?.find(m => m._id == id);
+    // const find = map.find(m => m._id == id);
+    console.log(getThePending);
+    const { value: markTheAssignment } = await Swal.fire({
+      title: "Evaluation",
+      html: `
+        <h1 class="mb-3"><strong>Examinee PDF Link</strong></h1>
+        <a target="_blank" href=${getThePending.pdfLink}>${getThePending.pdfLink}</a>
+        
+        <h1 class="pt-5 mb-3"><strong>Examinee Note</strong> : ${getThePending.quickNote}</h1>
+
+        
+        
+        <h1 class="-mb-3"><strong>Your Mark</strong></h1>
+        <input type="url" id="swal-input1" class="swal2-input">
+        <h1 class="-mb-3"><strong>Your Feedback</strong></h1>
+        <input type="textarea" id="swal-input2" class="swal2-input">
+
+        
+        
+
+        
+      `,
+      focusConfirm: false,
+      preConfirm: () => {
+        const obtainedMark = document.getElementById("swal-input1").value;
+        const feedback = document.getElementById("swal-input2").value;
+        const status = "Completed";
+        return {obtainedMark, feedback, status};
+      }
+    });
+    console.log(markTheAssignment);
+    if (!markTheAssignment?.obtainedMark.length <= 0 && !markTheAssignment?.feedback.length <= 0) {
+      // Swal.fire(JSON.stringify(formValues));
+      // console.log(markTheAssignment.pdfLink.length && markTheAssignment.quickNote.length );
+     axios.patch(`http://localhost:5000/submitAssignment/allSubmission/${id}`, markTheAssignment)
+     .then(res => {
+      if(res.data.modifiedCount > 0) {
+        Swal.fire(
+          'Great!',
+          "Got Mark! Set as completed",
+          'success'
+        );
+         navigate('/myAssignment');
+      }
+     })
+    }
+    return Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Provide the Url & Note",
+    });
+ 
   }
 
   return (
@@ -97,11 +153,12 @@ const SubmittedAssignment = () => {
                   
                 </th>
                 <th className="text-base">Profile</th>
+                <th className="text-base">Examinee Name</th>
                 <th className="text-base">Assignment Title</th>
-                <th className="text-base">Assignment Marks</th>
-                <th className="text-base">Obtained Marks</th>
-                <th className="text-base">Feedback</th>
-                <th className="text-base">Assignment Status</th>
+                <th className="text-base">Assignment Mark</th>
+                {/* <th className="text-base">Obtained Marks</th> */}
+                {/* <th className="text-base">Feedback</th> */}
+                <th className="text-base">Press to Mark</th>
               </tr>
             </thead>
             <tbody>
@@ -109,8 +166,7 @@ const SubmittedAssignment = () => {
                 <ViewAllMySubmissions
                   key={singleSubmission._id}
                   singleSubmission={singleSubmission}
-                  handleDelete={handleDelete}
-                  handleAssignmentConfirm={handleAssignmentConfirm}
+                  handleAssignmentMark={handleAssignmentMark}
                 ></ViewAllMySubmissions>
               ))}
             </tbody>

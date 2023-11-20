@@ -48,7 +48,7 @@ const MyAssignments = () => {
       });
   }
 
-  const handleAssignmentConfirm = (id) => {
+/*   const handleAssignmentConfirm = (id) => {
     // console.log(id);
 
     axios.patch(`http://localhost:5000/submitAssignment/specificSubmission/${id}`, {status:'Completed'})
@@ -62,7 +62,7 @@ const MyAssignments = () => {
         setAllSubmission(newSubmission);
     }
     })
-  }
+  } */
 
   return (
     <div>
@@ -110,7 +110,7 @@ const MyAssignments = () => {
                   key={singleSubmission._id}
                   singleSubmission={singleSubmission}
                   handleDelete={handleDelete}
-                  handleAssignmentConfirm={handleAssignmentConfirm}
+                  // handleAssignmentConfirm={handleAssignmentConfirm}
                 ></ViewAllMyAssignments>
               ))}
             </tbody>
