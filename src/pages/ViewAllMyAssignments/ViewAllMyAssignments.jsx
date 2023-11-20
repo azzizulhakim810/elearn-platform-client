@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { useContext } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
 
-const ViewAllMySubmission = ({singleSubmission, handleDelete, handleAssignmentConfirm}) => {
+const ViewAllMyAssignments = ({singleSubmission, handleDelete, handleAssignmentConfirm}) => {
   const {user} = useContext(AuthContext);
   const {_id, title, marks, status} = singleSubmission || {};
   // console.log(user.photoURL);
@@ -42,7 +42,7 @@ const ViewAllMySubmission = ({singleSubmission, handleDelete, handleAssignmentCo
         <td>Good</td>
         <th>
           {
-            status === "Confirmed" ? <span className="btn btn-ghost btn-xs">Confirmed</span> :
+            status === "Completed" ? <span className="btn btn-ghost btn-xs">Completed</span> :
             <button onClick={()=> handleAssignmentConfirm(_id)} className="btn btn-ghost btn-xs">Pending</button>
           }
           
@@ -52,10 +52,11 @@ const ViewAllMySubmission = ({singleSubmission, handleDelete, handleAssignmentCo
   );
 };
 
-ViewAllMySubmission.propTypes = {
+ViewAllMyAssignments.propTypes = {
   singleSubmission:PropTypes.object,
   handleDelete:PropTypes.func,
   handleAssignmentConfirm:PropTypes.func,
 };
 
-export default ViewAllMySubmission;
+export default ViewAllMyAssignments;
+

@@ -4,12 +4,15 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../providers/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 const CreateAssignment = () => {
   const {user} = useContext(AuthContext);
   const userEmail = user.email;
+  const navigate = useNavigate();
   const [startDate, setStartDate] = useState(new Date());
-  const handleAddProduct = (event) => {
+
+  const handleAddAssignment = (event) => {
     event.preventDefault();
 
     const form = event.target;
@@ -22,7 +25,7 @@ const CreateAssignment = () => {
     const date = form.date.value;
    
 
-    const newProduct = {
+    const newAssignment = {
       title,
       url,
       marks,
@@ -32,9 +35,9 @@ const CreateAssignment = () => {
       userEmail
     };
 
-    console.log(newProduct);
+    console.log(newAssignment);
 
-    axios.post('http://localhost:5000/assignment', newProduct)
+    axios.post('http://localhost:5000/assignment', newAssignment)
     .then(res => {
       console.log(res.data);
       if(res.data.insertedId) {
@@ -44,6 +47,7 @@ const CreateAssignment = () => {
           'success'
         );
          form.reset();
+         navigate('/allAssignments')
       }
     }
       
@@ -51,6 +55,7 @@ const CreateAssignment = () => {
    
     
   };
+
   return (
     <div>
       <div
@@ -75,7 +80,7 @@ const CreateAssignment = () => {
             CREATE AN ASSIGNMENT
           </h1>
 
-          <form onSubmit={handleAddProduct}>
+          <form onSubmit={handleAddAssignment}>
             {/* Title & Description row */}
 
             <div className="md:flex mb-8">
@@ -89,7 +94,7 @@ const CreateAssignment = () => {
                     type="text"
                     name="title"
                     placeholder="Title"
-                    className="input input-bordered w-full"
+                    className="input input-bordered w-full" required
                   />
                 </label>
               </div>
@@ -104,7 +109,7 @@ const CreateAssignment = () => {
                     type="text"
                     name="description"
                     placeholder="Description"
-                    className="input input-bordered w-full"
+                    className="input input-bordered w-full" required
                   />
                 </label>
               </div>
@@ -122,7 +127,7 @@ const CreateAssignment = () => {
                     type="text"
                     name="marks"
                     placeholder="Marks"
-                    className="input input-bordered w-full"
+                    className="input input-bordered w-full" required
                   />
                 </label>
               </div>
@@ -137,7 +142,7 @@ const CreateAssignment = () => {
                     type="url"
                     name="url"
                     placeholder="Thumbnail Image URL"
-                    className="input input-bordered w-full"
+                    className="input input-bordered w-full" required
                   />
                 </label>
               </div>
@@ -151,7 +156,7 @@ const CreateAssignment = () => {
                 </label>
 
                 <label className="input-group">
-                  <select id="difficultyLevel" className="input input-bordered w-full">
+                  <select id="difficultyLevel" className="input input-bordered w-full" required>
                     <option value="">--Choose an option--</option>
                     <option value="Easy">Easy</option>
                     <option value="Medium">Medium</option>
@@ -171,7 +176,7 @@ const CreateAssignment = () => {
                 <span className="label-text">Due Date</span>
               </label>
               <div className="mt-2">
-              <DatePicker name="date" className="input input-bordered -mt-2"  
+              <DatePicker name="date" className="input input-bordered -mt-2" required  
       showIcon
       selected={startDate}
       onChange={(date) => setStartDate(date)}

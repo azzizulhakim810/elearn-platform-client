@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
-import ViewAllMySubmission from "../ViewAllMySubmission/ViewAllMySubmission";
+import ViewAllMyAssignments from "../ViewAllMyAssignments/ViewAllMyAssignments";
 import axios from "axios";
 import Swal from "sweetalert2";
 
@@ -51,13 +51,13 @@ const MyAssignments = () => {
   const handleAssignmentConfirm = (id) => {
     // console.log(id);
 
-    axios.patch(`http://localhost:5000/submitAssignment/allSubmission/${id}`, {status:'Confirmed'})
+    axios.patch(`http://localhost:5000/submitAssignment/allSubmission/${id}`, {status:'Completed'})
     .then(res => {
       console.log(res.data);
       if(res.data.modifiedCount > 0) {
         const remaining = allSubmission?.filter(singleSub => singleSub._id !== id);
         const updated = allSubmission?.find(singleSub => singleSub._id === id);
-        updated.status = 'Confirmed';
+        updated.status = 'Completed';
         const newSubmission = [updated, ...remaining];
         setAllSubmission(newSubmission);
     }
@@ -106,12 +106,12 @@ const MyAssignments = () => {
             </thead>
             <tbody>
               {allSubmission?.map((singleSubmission) => (
-                <ViewAllMySubmission
+                <ViewAllMyAssignments
                   key={singleSubmission._id}
                   singleSubmission={singleSubmission}
                   handleDelete={handleDelete}
                   handleAssignmentConfirm={handleAssignmentConfirm}
-                ></ViewAllMySubmission>
+                ></ViewAllMyAssignments>
               ))}
             </tbody>
           </table>

@@ -49,7 +49,7 @@ const ViewSingleAssignment = () => {
         preConfirm: () => {
           const pdfLink = document.getElementById("swal-input1").value;
           const quickNote = document.getElementById("swal-input2").value;
-
+          const status = "Pending";
           return {pdfLink, quickNote, userEmail,userName, title, marks, status};
         }
       });

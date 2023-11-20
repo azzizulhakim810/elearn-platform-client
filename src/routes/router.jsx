@@ -63,7 +63,7 @@ export const router = createBrowserRouter([
       {
         path:'/update/:id',
         element:<PrivateRoute><UpdateAssignment></UpdateAssignment></PrivateRoute>,
-        // loader: ({params}) => fetch(`https://tech-tronix-server-de42tnfa0-ah-jims-projects.vercel.app/products/update/${params.id}`)
+        loader: ({params}) => fetch(`http://localhost:5000/assignment/updateOne/${params.id}`)
       },
       {
         path:'/myCart',

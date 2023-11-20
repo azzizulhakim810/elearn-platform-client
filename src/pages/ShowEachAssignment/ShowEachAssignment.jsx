@@ -1,9 +1,14 @@
 import PropTypes from "prop-types";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const ShowEachAssignment = ({ assignment }) => {
-  // console.log(assignment);
-  const { _id, url, title, level, marks } = assignment || {};
+  const {user} = useContext(AuthContext);
+  const currentUserEmail = user?.email;
+
+  const { _id, url, title, level, marks, userEmail } = assignment || {};
+  // console.log(currentUserEmail, userEmail);
   return (
     <div>
       <div className="relative flex flex-col text-gray-700 bg-white shadow-lg border-x-2 w-full rounded-sm bg-clip-border">
@@ -36,14 +41,26 @@ const ShowEachAssignment = ({ assignment }) => {
             </button>
           </Link>
 
-           <Link className="w-1/2" to={`/update/${_id}`}>
+          {
+            currentUserEmail === userEmail ? <Link className="w-1/2" to={`/update/${_id}`}>
             <button
               className=" w-full select-none rounded-full bg-purple-600 text-white py-3 px-3 text-center align-middle font-sans text-xs font-bold uppercase text-blue-gray-900 transition-all hover:scale-105 focus:scale-105 focus:opacity-[0.85] active:scale-100 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-              type="button"
+              type="button" 
             >
               Update Assignment
             </button>
-          </Link>
+          </Link> : 
+          <Link className="w-1/2" >
+          <button
+            className=" w-full select-none rounded-full bg-purple-600 text-white py-3 px-3 text-center align-middle font-sans text-xs font-bold uppercase text-blue-gray-900 transition-all hover:scale-105 focus:scale-105 focus:opacity-[0.85] active:scale-100 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+            type="button" disabled
+          >
+            Update Assignment
+          </button>
+        </Link>
+          }
+           
+
         </div>
       </div>
     </div>
