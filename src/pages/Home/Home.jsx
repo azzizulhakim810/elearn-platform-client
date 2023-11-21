@@ -38,7 +38,7 @@ const Home = () => {
             <p className="mb-8 uppercase text-white text-6xl font-bold">
             Assignment
             </p>
-           <Link to='/addProduct'>
+           <Link to='/allAssignments'>
            <button className="rounded-3xl bg-purple-600 hover:bg-white text-white hover:text-purple-600 py-3 px-8 text-center align-middle font-sans text-base font-bold uppercase text-blue-gray-900 transition-all hover:scale-105 focus:scale-105 focus:opacity-[0.85] active:scale-100 active:opacity-[0.85] "
       type="button">
               Explore

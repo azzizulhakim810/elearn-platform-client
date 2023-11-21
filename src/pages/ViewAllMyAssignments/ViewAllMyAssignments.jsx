@@ -37,10 +37,10 @@ const ViewAllMyAssignments = ({singleSubmission}) => {
         <td>
           {title}
         </td>
-        <td>{marks}</td>
-        <td>{obtainedMark}</td>
-        <td>{feedback}</td>
-        <th>
+        <td className='text-center'>{marks}</td>
+        <td className='text-center'>{obtainedMark}</td>
+        <td className='text-center'>{feedback}</td>
+        <th className='text-center'>
           {
             status === "Completed" ? <span className="btn btn-ghost btn-xs">Completed</span> :
             <button className="btn btn-ghost btn-xs">Pending</button>

@@ -34,16 +34,16 @@ const ViewAllMyAssignments = ({singleSubmission, handleAssignmentMark, handleDel
         </td>
         
         
-        <td>
+        <td className='text-center'>
           {userName}
         </td>
-        <td>
+        <td className='text-center'>
           {title}
         </td>
-        <td>{marks}</td>
+        <td className='text-center'>{marks}</td>
         {/* <td>20</td> */}
         {/* <td>Good</td> */}
-        <th>
+        <th className='text-center'>
           {/* {
             status === "Completed" ? <span className="btn btn-ghost btn-xs">Completed</span> :
             <button onClick={()=> handleAssignmentMark(_id)} className="btn btn-ghost btn-xs">Pending</button>

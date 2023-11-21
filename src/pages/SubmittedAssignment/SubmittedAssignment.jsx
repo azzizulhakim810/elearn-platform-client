@@ -5,6 +5,11 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
+import PDFViewer from "../../components/PDFViewer/PDFViewer";
+
+// import { Document, Page } from 'react-pdf';
+// import 'react-pdf/dist/Page/AnnotationLayer.css';
+// import 'react-pdf/dist/Page/TextLayer.css';
 
 const SubmittedAssignment = () => {
   const {user} = useContext(AuthContext)
@@ -12,6 +17,15 @@ const SubmittedAssignment = () => {
   const navigate = useNavigate();
   const [allSubmission, setAllSubmission] = useState([]);
 
+  // const pdfUrl = 'https://drive.google.com/uc?id=1-Md1WD6g5D0riERVfgOviklhv3_JDnHi';
+      // React Pdf Implementation 
+      // const [numPages, setNumPages] = useState();
+      // const [pageNumber, setPageNumber] = useState(1);
+  
+     /*  function onDocumentLoadSuccess({ numPages }) {
+        setNumPages(numPages);
+      }
+ */
   const url = `http://localhost:5000/submitAssignment/allSubmission/status`;
 
   useEffect(() => {
@@ -67,18 +81,32 @@ const SubmittedAssignment = () => {
 
   const handleAssignmentMark = async (id) => {
     // console.log(id);
+/*     // React Pdf Implementation 
+    const [numPages, setNumPages] = useState();
+    const [pageNumber, setPageNumber] = useState(1);
+
+    function onDocumentLoadSuccess({ numPages }) {
+      setNumPages(numPages);
+    } */
 
     const getThePending = allSubmission?.map(s => s)?.find(m => m._id == id);
     // const find = map.find(m => m._id == id);
     console.log(getThePending);
+    
+    // <PDFViewer pdfUrl={pdfUrl} />
+
     const { value: markTheAssignment } = await Swal.fire({
       title: "Evaluation",
       html: `
         <h1 class="mb-3"><strong>Examinee PDF Link</strong></h1>
         <a target="_blank" href=${getThePending.pdfLink}>${getThePending.pdfLink}</a>
+
         
         <h1 class="pt-5 mb-3"><strong>Examinee Note</strong> : ${getThePending.quickNote}</h1>
 
+        <div id="pdfDiv"></div>
+
+        
         
         
         <h1 class="-mb-3"><strong>Your Mark</strong></h1>
@@ -145,6 +173,14 @@ const SubmittedAssignment = () => {
         <h1 className="text-5xl text-center tracking-widest font-bold ">
           SUBMISSIONS
         </h1>
+
+        <div>
+
+        
+        
+
+    </div>
+
       </div>
       <div className="w-10/12 mx-auto pb-20">
         <div className="overflow-x-auto">
@@ -156,12 +192,12 @@ const SubmittedAssignment = () => {
                   
                 </th>
                 <th className="text-base">Profile</th>
-                <th className="text-base">Examinee Name</th>
-                <th className="text-base">Assignment Title</th>
-                <th className="text-base">Assignment Mark</th>
+                <th className="text-base  text-center">Examinee Name</th>
+                <th className="text-base  text-center">Assignment Title</th>
+                <th className="text-base text-center">Assignment Mark</th>
                 {/* <th className="text-base">Obtained Marks</th> */}
                 {/* <th className="text-base">Feedback</th> */}
-                <th className="text-base">Press to Mark</th>
+                <th className="text-base text-center">Press to Mark</th>
               </tr>
             </thead>
             <tbody>
@@ -175,6 +211,7 @@ const SubmittedAssignment = () => {
               ))}
             </tbody>
           </table>
+          {/* <PDFViewer pdfUrl='/src/sample.pdf' /> */}
         </div>
       </div>
     </div>
