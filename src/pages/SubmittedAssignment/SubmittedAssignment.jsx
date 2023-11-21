@@ -5,7 +5,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
-import PDFViewer from "../../components/PDFViewer/PDFViewer";
+// import PDFViewer from "../../components/PDFViewer/PDFViewer";
 
 // import { Document, Page } from 'react-pdf';
 // import 'react-pdf/dist/Page/AnnotationLayer.css';
@@ -99,14 +99,14 @@ const SubmittedAssignment = () => {
       title: "Evaluation",
       html: `
         <h1 class="mb-3"><strong>Examinee PDF Link</strong></h1>
-        <a target="_blank" href=${getThePending.pdfLink}>${getThePending.pdfLink}</a>
+        <a class="mb-10" target='blank' href=${getThePending.pdfLink}>${getThePending.pdfLink}</a>
+
+        
+        <iframe class="pt-5" src='https://sample2.tiiny.site' width="100%" height="600px" frameborder="0" scrolling="no"></iframe>
 
         
         <h1 class="pt-5 mb-3"><strong>Examinee Note</strong> : ${getThePending.quickNote}</h1>
 
-        <div id="pdfDiv"></div>
-
-        
         
         
         <h1 class="-mb-3"><strong>Your Mark</strong></h1>
