@@ -148,8 +148,33 @@ const Home = () => {
         </div>
       </div>
 
-     
+     {/* Our Feature Section  */}
+     <div>
+     <div className="hero h-[200px] md:h-[250px] bg-purple-600 mt-5" style={{backgroundImage: 'url(https://i.ibb.co/0mMnGqq/newsletter.png)'}}>
+  <div className="hero-overlay bg-opacity-10 "></div>
+  <div className=" text-neutral-content w-10/12">
+    <div className="grid md:grid-cols-2 grid-cols-1 justify-between">
 
+      <div  className="flex text-4xl items-center text-white gap-3">
+      <BsEnvelopeOpenHeart />
+      <h1 className="font-semibold">
+Subscribe to Newsletter</h1>
+      </div>
+
+      <div className="relative h-10 w-10/12 mx-auto">
+    <div className="absolute top-2/4 right-3 grid h-10 w-10 -translate-y-1/4 place-items-center text-4xl text-blue-gray-500 text-purple-600">
+    <IoIosSend />
+    </div>
+    <input
+      className="peer h-14 w-full rounded-[7px] bg-white border px-3 py-6 !pr-9 font-sans text-base font-normal text-blue-gray-700 outline outline-0 text-purple-600"
+      placeholder="Enter your email address "
+    />
+    
+  </div>
+    </div>
+  </div>
+</div>
+     </div>
 
 
 
