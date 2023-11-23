@@ -13,7 +13,8 @@ const AllAssignments = () => {
 const [selectedLevel, setSelectedLevel] = useState('all');
 const [assignments, setAssignments] = useState([]);
 const [allAssignments, setAllAssignments] = useState([]);
-
+const [currentPage, setCurrentPage] = useState(0);
+const [itemsPerPage, setItemsPerPage] = useState(3);
 // const totalAssignments = totalCount?.count;
 // const itemsPerPage = 10;
 
@@ -100,7 +101,55 @@ const [allAssignments, setAllAssignments] = useState([]);
         
       </div>
       <div className="flex justify-center pb-3 font-bold">Current Page : {currentPage}</div>
-     
+      <div className="flex justify-center pb-10">
+        
+      <nav>
+  <ul className="flex">
+  <li>
+        <a
+          className="mx-1 flex h-9 w-9 items-center justify-center rounded-full border border-blue-gray-100 bg-transparent p-0 text-sm text-blue-gray-500 transition duration-150 ease-in-out hover:bg-light-300"
+          
+          aria-label="Previous"
+        >
+          <button  className="material-icons text-sm"><FaArrowLeftLong /></button>
+        </a>
+      </li>
+
+
+
+{/*     <li>
+      <a
+        className="mx-1 flex h-9 w-9 items-center justify-center rounded-full border border-blue-gray-100 bg-transparent p-0 text-sm text-blue-gray-500 transition duration-150 ease-in-out hover:bg-light-300"
+        href="#"
+      >
+        2
+      </a>
+    </li>
+
+    <li>
+      <a
+        className="mx-1 flex h-9 w-9 items-center justify-center rounded-full border border-blue-gray-100 bg-transparent p-0 text-sm text-blue-gray-500 transition duration-150 ease-in-out hover:bg-light-300"
+        href="#"
+      >
+        3
+      </a>
+    </li>
+*/}
+    <li>
+      <a
+        className="mx-1 flex h-9 w-9 items-center justify-center rounded-full border border-blue-gray-100 bg-transparent p-0 text-sm text-blue-gray-500 transition duration-150 ease-in-out hover:bg-light-300"
+        
+        aria-label="Next"
+      >
+        <button  className="material-icons text-sm"><FaArrowRightLong /></button>
+      </a>
+    </li> 
+
+  
+  </ul>
+  
+</nav>
+      </div>
     </div>
   );
 };
