@@ -9,7 +9,7 @@ const Footer = () => {
   <nav className="grid grid-flow-col gap-4">
     <Link to='/' className="link link-hover">Home</Link> 
     <Link to='/login' className="link link-hover">Login</Link> 
-    <Link to='/myCart' className="link link-hover">My Cart</Link> 
+    <Link to='/allAssignemtns' className="link link-hover">All Assignments</Link> 
   </nav> 
   <nav>
     <div className="grid grid-flow-col gap-4">
@@ -21,7 +21,7 @@ const Footer = () => {
     </div>
   </nav> 
   <aside>
-    <p>Copyright © 2023 - All right reserved by Tech Tronix</p>
+    <p>Copyright © 2023 - All right reserved by E-Learn</p>
   </aside>
 </footer>
     </div>

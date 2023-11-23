@@ -1,25 +1,20 @@
 
-import { useEffect, useState } from "react";
+
 import { Link } from "react-router-dom";
 import { DefaultAccordion } from '../../components/Accordion/DefaultAccordion';
-
+import { IoDocumentTextSharp  } from "react-icons/io5";
+import { AiFillThunderbolt } from "react-icons/ai";
+import { MdPreview } from "react-icons/md";
+import { MdOutlineCastForEducation } from "react-icons/md";
+import { FaUserShield } from "react-icons/fa6";
+import { MdGeneratingTokens } from "react-icons/md";
+import { BsEnvelopeOpenHeart } from "react-icons/bs";
+import { IoIosSend } from "react-icons/io";
 
 const Home = () => {
-  // const [brands, setBrands] = useState();
-  const [loading, setLoading] = useState(true);
-  // const brands = useLoaderData();
-  // console.log(brands);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      // const res = await fetch ('brands.json');
-      // const data = await res.json();
-      // console.log(data);
-      // setBrands(data);
-      setLoading(false);
-    }
-    fetchData();
-  }, [])
+
+
   return (
     <div>
       {/* Hero Section  */}
@@ -53,21 +48,85 @@ const Home = () => {
 
       {/* Feature */}
       <div className="py-10">
-        <h1 className="text-4xl text-center py-3  font-bold">
-          Our Feature
+      <h1 className="text-base pt-6 text-center tracking-widest text-gray-500 font-medium">
+        THERE ARE A FEW
         </h1>
-        <div className="flex flex-col w-32 mx-auto mb-5">
-          <div className="py-[1px] my-3 bg-purple-600"></div>
-        </div>
+        
+        <h1 className="text-5xl text-center pb-8 tracking-widest font-bold ">
+        OUR FEATURE
+        </h1>
         
 
       <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 w-11/12 mx-auto">
-        {
-          loading && <span className="loading loading-spinner text-error text-6xl mx-auto flex justify-center items-center py-5 "></span>
-        }
-      {/* {brands?.map((brand) => (
-        <Brands key={brand.id} brand={brand}></Brands>
-      ))} */}
+       
+
+
+
+
+
+    <div className="w-full bg-transparent border-2 border-s-purple-50 rounded-md overflow-hidden shadow-lg ">
+      <div className="px-10 py-8 text-center">
+        <div className="flex items-center justify-center mb-4">
+          <div className="text-4xl text-purple-500"><AiFillThunderbolt /></div>
+        </div>
+        <div className="text-2xl font-bold mb-2 text-gray-800">Real-Time Collaboration</div>
+        <p className="text-gray-600 text-base">Enable real-time collaboration on assignments where multiple users can work on the same assignment simultaneously.</p>
+      </div>
+    </div>
+
+    <div className="w-full  bg-transparent border-2 border-s-purple-50  rounded-md overflow-hidden shadow-lg">
+      <div className="px-10 py-8 text-center">
+        <div className="flex items-center justify-center mb-4">
+          <div className="text-4xl text-purple-500"><IoDocumentTextSharp  /></div>
+        </div>
+        <div className="text-2xl font-bold mb-2 text-gray-800">Assignment Management</div>
+        <p className="text-gray-600 text-base">The Assignment Management feature group focuses on providing users to create, update, and manage assignments.</p>
+      </div>
+    </div>
+
+    <div className="w-full  bg-transparent border-2 border-s-purple-50 rounded-md overflow-hidden shadow-lg">
+      <div className="px-10 py-8 text-center">
+        <div className="flex items-center justify-center mb-4">
+          <div className="text-4xl text-purple-500"><MdPreview /></div>
+        </div>
+        <div className="text-2xl font-bold mb-2 text-gray-800">Peer Review System</div>
+        <p className="text-gray-600 text-base">Introduce a peer review system where users can review and provide feedback on assignments submitted by their peers.</p>
+      </div>
+    </div>
+    <div className="w-full  bg-transparent border-2 border-s-purple-50 rounded-md overflow-hidden shadow-lg ">
+      <div className="px-10 py-8 text-center">
+        <div className="flex items-center justify-center mb-4">
+          <div className="text-4xl text-purple-500"><MdOutlineCastForEducation /></div>
+        </div>
+        <div className="text-2xl font-bold mb-2 text-gray-800">Study Groups</div>
+        <p className="text-gray-600 text-base">Allow users to create or join study groups where they can collaborate on assignments, discuss topics, and share resources.</p>
+      </div>
+    </div>
+    <div className="w-full  bg-transparent border-2 border-s-purple-50 rounded-md overflow-hidden shadow-lg">
+      <div className="px-10 py-8 text-center">
+        <div className="flex items-center justify-center mb-4">
+          <div className="text-4xl text-purple-500"><FaUserShield  /></div>
+        </div>
+        <div className="text-2xl font-bold mb-2 text-gray-800">User Registration</div>
+        <p className="text-gray-600 text-base">Users can register for an account by providing essential information, including name, photoURL, email, and password using Firebase authentication.</p>
+      </div>
+    </div>
+    <div className="w-full  bg-transparent border-2 border-s-purple-50 rounded-md overflow-hidden shadow-lg">
+      <div className="px-10 py-8 text-center">
+        <div className="flex items-center justify-center mb-4">
+          <div className="text-4xl text-purple-500"><MdGeneratingTokens  /></div>
+        </div>
+        <div className="text-2xl font-bold mb-2 text-gray-800">JWT Token Implementation</div>
+        <p className="text-gray-600 text-base">Upon login, a JWT token is generated and stored on the client-side, enhancing security during API calls.</p>
+      </div>
+    </div>
+
+
+
+
+
+
+
       </div>
       </div>
 
@@ -85,64 +144,13 @@ const Home = () => {
         {/* accordion  */}
         <div className="md:w-8/12 w-10/12 mx-auto" >
           <DefaultAccordion></DefaultAccordion>
-        {/*   <div className="collapse collapse-plus  py-3 rounded-none my-[1px] ">
-            <input type="radio" name="my-accordion-3" className='accordion-item-radio' />
-            <div className="collapse-title text-[18px] font-medium bg-gray-100 text-black">
-            1. What is your website about?
-            </div>
-            <div className="collapse-content">
-              <p className="text-gray-500">
-              Our website is dedicated to all things electronic, including information, reviews, and recommendations for various electronic products.
-              </p>
-            </div>
-          </div>
-          <div className="collapse collapse-plus  py-3 rounded-none my-[1px] ">
-            <input type="radio" name="my-accordion-3" className='accordion-item-radio' />
-            <div className="collapse-title text-[18px] font-medium ">
-            2. What kind of electronic products do you cover?
-            </div>
-            <div className="collapse-content">
-              <p className="text-gray-500">
-              We cover a wide range of electronic products, including smartphones, laptops, home appliances, cameras, audio equipment, and more.
-              </p>
-            </div>
-          </div>
-          <div className="collapse collapse-plus  py-3 rounded-none my-[1px] ">
-            <input type="radio" name="my-accordion-3" className='accordion-item-radio'/>
-            <div className="collapse-title text-[18px] font-medium ">
-            3. Are the product reviews and recommendations unbiased?
-            </div>
-            <div className="collapse-content">
-              <p className="text-gray-500">
-              Yes, we aim to provide unbiased and honest reviews and recommendations. Our goal is to help you make informed decisions.
-              </p>
-            </div>
-          </div>
-          <div className="collapse collapse-plus  py-3 rounded-none my-[1px] ">
-            <input type="radio" name="my-accordion-3" className='accordion-item-radio'/>
-            <div className="collapse-title text-[18px] font-medium ">
-            4. Is my personal information secure on your website?
-            </div>
-            <div className="collapse-content">
-              <p className="text-gray-500">
-              We take your privacy seriously. Please review our privacy policy to understand how we handle your personal information.
-              </p>
-            </div>
-          </div>
-          <div className="collapse collapse-plus  py-3 rounded-none my-[1px] ">
-            <input type="radio" name="my-accordion-3" className='accordion-item-radio'/>
-            <div className="collapse-title text-[18px] font-medium ">
-            5. Can I request reviews for specific products?
-            </div>
-            <div className="collapse-content">
-              <p className="text-gray-500">
-              Absolutely! We welcome product review requests. Contact us, and we will do our best to review the product you are interested in.
-              </p>
-            </div>
-          </div> */}
 
         </div>
       </div>
+
+     
+
+
 
 
       
