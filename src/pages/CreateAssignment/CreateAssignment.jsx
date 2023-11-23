@@ -76,7 +76,7 @@ const CreateAssignment = () => {
             FILL THE FORM
           </h1>
 
-          <h1 className="text-5xl text-center pb-10 tracking-widest font-bold ">
+          <h1 className="text-4xl md:text-5xl text-center pb-10 tracking-widest font-bold">
             CREATE AN ASSIGNMENT
           </h1>
 

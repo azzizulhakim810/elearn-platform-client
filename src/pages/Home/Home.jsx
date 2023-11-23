@@ -52,7 +52,7 @@ const Home = () => {
         THERE ARE A FEW
         </h1>
         
-        <h1 className="text-5xl text-center pb-8 tracking-widest font-bold ">
+        <h1 className="text-4xl md:text-5xl text-center pb-8 tracking-widest font-bold ">
         OUR FEATURE
         </h1>
         
@@ -122,11 +122,6 @@ const Home = () => {
     </div>
 
 
-
-
-
-
-
       </div>
       </div>
 
@@ -137,7 +132,7 @@ const Home = () => {
         ALL YOU NEED TO KNOW
         </h1>
         
-        <h1 className="text-5xl text-center pb-20 tracking-widest font-bold ">
+        <h1 className="text-4xl md:text-5xl text-center pb-20 tracking-widest font-bold ">
         FREQUENTLY ASKED QUESTIONS
         </h1>
 
@@ -153,10 +148,10 @@ const Home = () => {
      <div className="hero h-[200px] md:h-[250px] bg-purple-600 mt-5" style={{backgroundImage: 'url(https://i.ibb.co/0mMnGqq/newsletter.png)'}}>
   <div className="hero-overlay bg-opacity-10 "></div>
   <div className=" text-neutral-content w-10/12">
-    <div className="grid md:grid-cols-2 grid-cols-1 justify-between">
+    <div className="grid md:grid-cols-2 grid-cols-1 justify-between pb-5">
 
-      <div  className="flex text-4xl items-center text-white gap-3">
-      <BsEnvelopeOpenHeart />
+      <div className="flex lg:text-xl md:text-2xl text-2xl justify-center items-center pb-4 md:pb-0 text-white gap-3">
+      <BsEnvelopeOpenHeart/>
       <h1 className="font-semibold">
 Subscribe to Newsletter</h1>
       </div>

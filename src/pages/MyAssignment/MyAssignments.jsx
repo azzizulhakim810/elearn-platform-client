@@ -80,11 +80,11 @@ const MyAssignments = () => {
       </div>
       <div className="py-10">
         <h1 className="text-base text-center tracking-widest text-gray-500 font-medium">
-          ALL ARE THE
+          ALL ARE
         </h1>
 
-        <h1 className="text-5xl text-center tracking-widest font-bold ">
-          SUBMISSIONS
+        <h1 className="text-4xl md:text-5xl  text-center tracking-widest font-bold ">
+          MY SUBMISSIONS
         </h1>
       </div>
       <div className="w-10/12 mx-auto pb-20">

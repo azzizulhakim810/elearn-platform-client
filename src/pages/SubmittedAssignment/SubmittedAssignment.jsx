@@ -167,11 +167,11 @@ const SubmittedAssignment = () => {
       </div>
       <div className="py-10">
         <h1 className="text-base text-center tracking-widest text-gray-500 font-medium">
-          ALL ARE THE
+        ALL USER'S
         </h1>
 
-        <h1 className="text-5xl text-center tracking-widest font-bold ">
-          SUBMISSIONS
+        <h1 className="text-4xl md:text-5xl text-center tracking-widest font-bold ">
+        SUBMISSIONS
         </h1>
 
         <div>

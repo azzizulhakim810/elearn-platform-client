@@ -101,13 +101,13 @@ const Navbar = () => {
   );
   // console.log(user);
   return (
-    <div id="navbar" className="w-full relative  z-50  ">
+    <div id="navbar" className="w-full relative  z-50">
       <div className="navbar shadow-purple-500 text-black w-11/12 mx-auto py-6">
         <div className="navbar-start ">
           <div className="dropdown">
             <label
               tabIndex={0}
-              className="btn bg-transparent p-0  me-4 border-none text-black lg:hidden"
+              className="btn bg-transparent p-0  me-4 border-none text-white lg:hidden"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -126,7 +126,7 @@ const Navbar = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-8 z-[1] px-3 py-4 shadow bg-purple-600 rounded-none w-[200px]"
+              className="menu menu-sm dropdown-content mt-8 z-[1] px-3 py-4 shadow bg-white rounded-none w-[200px]"
             >
               {menuItem}
             </ul>
