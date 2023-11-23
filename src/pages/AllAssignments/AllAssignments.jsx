@@ -127,7 +127,20 @@ const [itemsPerPage, setItemsPerPage] = useState(3);
           <button onClick={handlePrevPage} className="material-icons text-sm"><FaArrowLeftLong /></button>
         </a>
       </li>
-
+    {
+      pages.map((i, page) => 
+      <li key={i}>
+        <button onClick={() => setCurrentPage(page)}
+          className={currentPage === page ? "mx-1 flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-tr from-purple-600 to-purple-400 p-4 text-sm text-white shadow-md shadow-purple-500/20 transition duration-150 ease-in-out" : 
+          "mx-1 flex h-9 w-9 items-center justify-center rounded-full"
+        }
+          
+        >
+          {page}
+        </button>
+      </li> 
+      )
+    }
 
 
 {/*     <li>
