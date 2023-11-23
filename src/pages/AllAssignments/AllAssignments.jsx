@@ -111,7 +111,7 @@ const [itemsPerPage, setItemsPerPage] = useState(3);
           
           aria-label="Previous"
         >
-          <button  className="material-icons text-sm"><FaArrowLeftLong /></button>
+          <button onClick={handlePrevPage} className="material-icons text-sm"><FaArrowLeftLong /></button>
         </a>
       </li>
 
@@ -141,7 +141,7 @@ const [itemsPerPage, setItemsPerPage] = useState(3);
         
         aria-label="Next"
       >
-        <button  className="material-icons text-sm"><FaArrowRightLong /></button>
+        <button onClick={handleNextPage} className="material-icons text-sm"><FaArrowRightLong /></button>
       </a>
     </li> 
 
