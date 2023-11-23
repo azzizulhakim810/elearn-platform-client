@@ -31,7 +31,6 @@ export const router = createBrowserRouter([
       {
         path:'/allAssignments',
         element:<AllAssignments></AllAssignments>,
-        // loader: () => fetch('http://localhost:5000/assignment')
         loader: () => fetch('http://localhost:5000/assignmentsCount')
       },
       {
@@ -51,25 +50,11 @@ export const router = createBrowserRouter([
         path:'/submittedAssignment',
         element:<PrivateRoute><SubmittedAssignment></SubmittedAssignment></PrivateRoute>
       },
-      {
-        path:'/allProducts/:brandName',
-        // element:<PrivateRoute><BrandBasedProducts></BrandBasedProducts></PrivateRoute>,
-        // loader: ({params}) => fetch(`https://tech-tronix-server-de42tnfa0-ah-jims-projects.vercel.app/products/${params.brandName}`)
-      },
-      {
-        path:'/singleProduct/:id',
-        element:<PrivateRoute><ViewSingleAssignment></ViewSingleAssignment></PrivateRoute>,
-        // loader: ({params}) => fetch(`https://tech-tronix-server-de42tnfa0-ah-jims-projects.vercel.app/products/single/${params.id}`)
-      },
+      
       {
         path:'/update/:id',
         element:<PrivateRoute><UpdateAssignment></UpdateAssignment></PrivateRoute>,
         loader: ({params}) => fetch(`http://localhost:5000/assignment/updateOne/${params.id}`)
-      },
-      {
-        path:'/myCart',
-        // element:<PrivateRoute><MyCart></MyCart></PrivateRoute>,
-        // loader: () => fetch ('https://tech-tronix-server-de42tnfa0-ah-jims-projects.vercel.app/user')
       },
       {
         path:'/login',

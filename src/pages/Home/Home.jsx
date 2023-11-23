@@ -61,9 +61,6 @@ const Home = () => {
        
 
 
-
-
-
     <div className="w-full bg-transparent border-2 border-s-purple-50 rounded-md overflow-hidden shadow-lg ">
       <div className="px-10 py-8 text-center">
         <div className="flex items-center justify-center mb-4">
@@ -150,7 +147,7 @@ const Home = () => {
   <div className=" text-neutral-content w-10/12">
     <div className="grid md:grid-cols-2 grid-cols-1 justify-between pb-5">
 
-      <div className="flex lg:text-xl md:text-2xl text-2xl justify-center items-center pb-4 md:pb-0 text-white gap-3">
+      <div className="flex lg:text-4xl md:text-2xl text-2xl justify-center items-center pb-4 md:pb-0 text-white gap-3">
       <BsEnvelopeOpenHeart/>
       <h1 className="font-semibold">
 Subscribe to Newsletter</h1>

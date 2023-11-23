@@ -7,7 +7,7 @@ import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 
 const AllAssignments = () => {
  
-  // const allAssignments = useLoaderData(); 
+
   const {count} = useLoaderData(); 
   console.log(count);
 const [selectedLevel, setSelectedLevel] = useState('all');
@@ -15,18 +15,7 @@ const [assignments, setAssignments] = useState([]);
 const [allAssignments, setAllAssignments] = useState([]);
 const [currentPage, setCurrentPage] = useState(0);
 const [itemsPerPage, setItemsPerPage] = useState(3);
-// const totalAssignments = totalCount?.count;
-// const itemsPerPage = 10;
 
-
-
-/* const pages = [];
-  console.log(numberOfPages);
-  for(let i = 0; i < numberOfPages; i++) {
-    // console.log(pages);
-    pages.push(i);
-  }
-  console.log(pages); */
 
 
   useEffect(() => {
@@ -40,17 +29,6 @@ const [itemsPerPage, setItemsPerPage] = useState(3);
     fetchData();
   }, [currentPage, itemsPerPage]);
   // console.log(selectedLevel,assignments);
-
-  // Pagination fetch 
-/*   useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch('http://localhost:5000/assignment');
-      const data = await response.json();
-      setAllAssignments(data);
-    };
-
-    fetchData();
-  }, []); */
 
 
   const handleItemsPerPage = (e) => {
@@ -143,24 +121,6 @@ const [itemsPerPage, setItemsPerPage] = useState(3);
     }
 
 
-{/*     <li>
-      <a
-        className="mx-1 flex h-9 w-9 items-center justify-center rounded-full border border-blue-gray-100 bg-transparent p-0 text-sm text-blue-gray-500 transition duration-150 ease-in-out hover:bg-light-300"
-        href="#"
-      >
-        2
-      </a>
-    </li>
-
-    <li>
-      <a
-        className="mx-1 flex h-9 w-9 items-center justify-center rounded-full border border-blue-gray-100 bg-transparent p-0 text-sm text-blue-gray-500 transition duration-150 ease-in-out hover:bg-light-300"
-        href="#"
-      >
-        3
-      </a>
-    </li>
-*/}
     <li>
       <a
         className="mx-1 flex h-9 w-9 items-center justify-center rounded-full border border-blue-gray-100 bg-transparent p-0 text-sm text-blue-gray-500 transition duration-150 ease-in-out hover:bg-light-300"
@@ -173,8 +133,8 @@ const [itemsPerPage, setItemsPerPage] = useState(3);
 
     <select id="difficultyLevel" value={itemsPerPage} onChange={handleItemsPerPage}
            className="input input-bordered  h-10">
-                    <option value="2">2</option>
-                    <option value="4">4</option>
+                    <option value="3">3</option>
+                    <option value="5">5</option>
                     <option value="10">10</option>
                   </select>
   </ul>
