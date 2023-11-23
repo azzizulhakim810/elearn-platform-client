@@ -56,7 +56,7 @@ const [allAssignments, setAllAssignments] = useState([]);
   const numberOfPages = Math.ceil(count/itemsPerPage);
   console.log(numberOfPages);
 
-
+  const pages = [...Array(numberOfPages).keys()] ;
   // console.log(pages);
 
   // Filter assignments based on the selected level
