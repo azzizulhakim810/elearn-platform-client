@@ -53,7 +53,11 @@ const [itemsPerPage, setItemsPerPage] = useState(3);
   }, []); */
 
 
-
+  const handleItemsPerPage = (e) => {
+    const val = parseInt(e.target.value)
+    setItemsPerPage(val);
+    setCurrentPage(0);
+  }
   const numberOfPages = Math.ceil(count/itemsPerPage);
   console.log(numberOfPages);
 
@@ -66,7 +70,16 @@ const [itemsPerPage, setItemsPerPage] = useState(3);
     : assignments.filter(assignment => assignment.level === selectedLevel);
     // console.log(filteredAssignments.length);
 
-
+    const handlePrevPage = () => {
+      if(currentPage > 0) {
+        setCurrentPage(currentPage -1);
+      }
+    }
+    const handleNextPage = () => {
+      if(currentPage < pages.length - 1) {
+        setCurrentPage(currentPage +1);
+      }
+    }
 
   return (
     <div>
@@ -145,7 +158,12 @@ const [itemsPerPage, setItemsPerPage] = useState(3);
       </a>
     </li> 
 
-  
+    <select id="difficultyLevel" value={itemsPerPage} onChange={handleItemsPerPage}
+           className="input input-bordered  h-10">
+                    <option value="2">2</option>
+                    <option value="4">4</option>
+                    <option value="10">10</option>
+                  </select>
   </ul>
   
 </nav>
