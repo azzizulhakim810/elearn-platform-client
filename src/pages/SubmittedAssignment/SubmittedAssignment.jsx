@@ -102,7 +102,7 @@ const SubmittedAssignment = () => {
         <a class="mb-10" target='blank' href=${getThePending.pdfLink}>${getThePending.pdfLink}</a>
 
         
-        <iframe class="pt-5" src='https://sample2.tiiny.site' width="100%" height="600px" frameborder="0" scrolling="no"></iframe>
+        <iframe class="pt-5" src=${getThePending.pdfLink} width="100%" height="600px" frameborder="0" scrolling="no"></iframe>
 
         
         <h1 class="pt-5 mb-3"><strong>Examinee Note</strong> : ${getThePending.quickNote}</h1>
