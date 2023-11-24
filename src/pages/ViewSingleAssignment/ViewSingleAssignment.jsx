@@ -58,7 +58,7 @@ const ViewSingleAssignment = () => {
       if (!assignmentSubmission?.pdfLink.length <= 0 && !assignmentSubmission?.quickNote.length <= 0) {
         // Swal.fire(JSON.stringify(formValues));
         console.log(assignmentSubmission.pdfLink.length && assignmentSubmission.quickNote.length );
-       axios.post('http://localhost:5000/submitAssignment', assignmentSubmission)
+       axios.post('https://elearn-platform-server.vercel.app/submitAssignment', assignmentSubmission)
        .then(res => {
         if(res.data.insertedId){ 
           console.log(res.data);

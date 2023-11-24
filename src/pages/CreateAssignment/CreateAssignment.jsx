@@ -37,7 +37,7 @@ const CreateAssignment = () => {
 
     console.log(newAssignment);
 
-    axios.post('http://localhost:5000/assignment', newAssignment)
+    axios.post('https://elearn-platform-server.vercel.app/assignment', newAssignment)
     .then(res => {
       console.log(res.data);
       if(res.data.insertedId) {

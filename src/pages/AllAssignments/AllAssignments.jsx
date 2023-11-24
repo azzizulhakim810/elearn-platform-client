@@ -20,7 +20,7 @@ const [itemsPerPage, setItemsPerPage] = useState(3);
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(`http://localhost:5000/assignment?page=${currentPage}&size=${itemsPerPage}`);
+      const response = await fetch(`https://elearn-platform-server.vercel.app/assignment?page=${currentPage}&size=${itemsPerPage}`);
       const data = await response.json();
       setAllAssignments(data);
       setAssignments(data);

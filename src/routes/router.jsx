@@ -31,12 +31,12 @@ export const router = createBrowserRouter([
       {
         path:'/allAssignments',
         element:<AllAssignments></AllAssignments>,
-        loader: () => fetch('http://localhost:5000/assignmentsCount')
+        loader: () => fetch('https://elearn-platform-server.vercel.app/assignmentsCount')
       },
       {
         path:'/singleAssignment/:id',
         element:<PrivateRoute><ViewSingleAssignment></ViewSingleAssignment></PrivateRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/assignment/singleOne/${params.id}`)
+        loader: ({params}) => fetch(`https://elearn-platform-server.vercel.app/assignment/singleOne/${params.id}`)
       },
       {
         path:'/createAssignment',
@@ -54,7 +54,7 @@ export const router = createBrowserRouter([
       {
         path:'/update/:id',
         element:<PrivateRoute><UpdateAssignment></UpdateAssignment></PrivateRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/assignment/updateOne/${params.id}`)
+        loader: ({params}) => fetch(`https://elearn-platform-server.vercel.app/assignment/updateOne/${params.id}`)
       },
       {
         path:'/login',

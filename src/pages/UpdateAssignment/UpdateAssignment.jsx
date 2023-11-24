@@ -41,7 +41,7 @@ const UpdateAssignment = () => {
 
     console.log(updateAssignment);
 
-    axios.put(`http://localhost:5000/assignment/updateOne/${_id}`, updateAssignment, {withCredentials: true})
+    axios.put(`https://elearn-platform-server.vercel.app/assignment/updateOne/${_id}`, updateAssignment, {withCredentials: true})
     .then(res => {
       console.log(res.data);
       if(res.data.modifiedCount > 0) {

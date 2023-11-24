@@ -26,7 +26,7 @@ const SubmittedAssignment = () => {
         setNumPages(numPages);
       }
  */
-  const url = `http://localhost:5000/submitAssignment/allSubmission/status`;
+  const url = `https://elearn-platform-server.vercel.app/submitAssignment/allSubmission/status`;
 
   useEffect(() => {
     fetch(url)
@@ -52,7 +52,7 @@ const SubmittedAssignment = () => {
         
         if(captureTheUser.userEmail === currentUser) {
           if (result.isConfirmed) {
-            axios.delete(`http://localhost:5000/submitAssignment/allSubmission/${id}`)
+            axios.delete(`https://elearn-platform-server.vercel.app/submitAssignment/allSubmission/${id}`)
             .then(res => {
               if(res.data.deletedCount > 0 ) {
                 const remaining = allSubmission.filter(singleSub => singleSub._id !== id);
@@ -131,7 +131,7 @@ const SubmittedAssignment = () => {
     if (!markTheAssignment?.obtainedMark.length <= 0 && !markTheAssignment?.feedback.length <= 0) {
       // Swal.fire(JSON.stringify(formValues));
       // console.log(markTheAssignment.pdfLink.length && markTheAssignment.quickNote.length );
-     axios.patch(`http://localhost:5000/submitAssignment/allSubmission/${id}`, markTheAssignment)
+     axios.patch(`https://elearn-platform-server.vercel.app/submitAssignment/allSubmission/${id}`, markTheAssignment)
      .then(res => {
       if(res.data.modifiedCount > 0) {
         Swal.fire(
